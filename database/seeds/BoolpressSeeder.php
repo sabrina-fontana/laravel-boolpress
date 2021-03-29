@@ -26,7 +26,7 @@ class BoolpressSeeder extends Seeder
 
             $authorInfo = new AuthorInfo();
             $authorInfo->name = $faker->name();
-            $authorInfo->pic = 'https://picsum.photos/seed/' . rand(0, 1000) . '/200/300';
+            $authorInfo->pic = 'https://picsum.photos/seed/' . rand(0, 1000) . '/200/200';
             $authorInfo->birthdate = $faker->dateTime();
 
             $author->info()->save($authorInfo);
