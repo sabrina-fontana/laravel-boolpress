@@ -15,6 +15,7 @@
                 <th scope="col">Title</th>
                 <th scope="col">Text</th>
                 <th scope="col">Author</th>
+                <th scope="col">Tags</th>
             </tr>
         </thead>
 
@@ -25,6 +26,11 @@
                     <td><a href="{{route('posts.show', compact('post'))}}">{{$post->title}}</a></td>
                     <td>{{$post->text}}</td>
                     <td>{{$post->author->info->name}}</td>
+                    <td>
+                        @foreach ($post->tags as $tag)
+                            {{$tag->name}}
+                        @endforeach
+                    </td>
                 </tr>
             @endforeach
         </tbody>
