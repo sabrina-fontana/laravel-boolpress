@@ -101,8 +101,13 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        // $post->tags()->detach();
-        // $post->delete();
-        // return redirect()->route('posts.index');
+        // detach() per many to many ('belongsToMany')
+        $post->tags()->detach();
+        // delete() per one to many ('hasMany')
+        $post->comment()->delete();
+        // dissociate() per one to many ('belongsTo')
+        $post->author()->dissociate();
+        $post->delete();
+        return redirect()->route('posts.index');
     }
 }
