@@ -30,4 +30,6 @@
         </tbody>
     </table>
 
+    <a href="{{route('posts.create')}}" class="btn btn-primary">New post</a>
+
 @endsection
