@@ -83,7 +83,13 @@ class PostController extends Controller
     {
         $data = $request->all();
         $post->update($data);
-        $post->tags()->attach($data['tags']);
+        foreach($data['tags'] as $tag) {
+            if ($tag === null) {
+                $post->tags()->detach();
+            } else {
+                $post->tags()->attach($data['tags']);
+            }
+        }
         return redirect()->route('posts.show', compact('post'));
     }
 
@@ -95,6 +101,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        // $post->tags()->detach();
+        // $post->delete();
+        // return redirect()->route('posts.index');
     }
 }

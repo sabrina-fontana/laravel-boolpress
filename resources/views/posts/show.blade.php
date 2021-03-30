@@ -15,6 +15,7 @@
             </p>
             <p class="card-text">{{$post->text}}</p>
             <p class="card-text">{{$post->author->info->name}}</p>
+            <a href="{{route('posts.edit', compact('post'))}}" class="btn btn-warning">Edit</a>
             <a href="{{route('authors.show', ['author'=>$post->author->id])}}" class="btn btn-primary">Go to the author</a>
             <a href="{{route('posts.index')}}" class="btn btn-primary">Back to posts list</a>
         </div>

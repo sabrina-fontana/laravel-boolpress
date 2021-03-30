@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('title', 'create posts')
+@section('title', 'edit posts')
 
 @section('content')
 
@@ -29,6 +29,7 @@
         <div class="form-group">
           <label for="id">Tags</label>
           <select class="form-control" id="tag" name="tags[]" multiple>
+                <option value="">nessuno</option>
             	@foreach($tags as $tag)
                     <option value="{{$tag->id}}"  
                         @foreach($post->tags as $postTag) 

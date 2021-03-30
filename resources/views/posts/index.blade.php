@@ -16,6 +16,7 @@
                 <th scope="col">Text</th>
                 <th scope="col">Author</th>
                 <th scope="col">Tags</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
 
@@ -31,7 +32,15 @@
                             {{$tag->name}}
                         @endforeach
                     </td>
-                    <td><a class="btn btn-warning" href="{{route('posts.edit', compact('post'))}}">Edit</a></td>
+                    <td>
+                        <button class="btn btn-success my-1" href="{{route('posts.show', compact('post'))}}">Show</button>
+                        <button class="btn btn-warning my-1" href="{{route('posts.edit', compact('post'))}}">Edit</button>
+                        <form method="post" action="{{route('posts.destroy', compact('post'))}}">
+                            @csrf  
+                            @method('DELETE')
+                            <button class="btn btn-danger my-1" type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
