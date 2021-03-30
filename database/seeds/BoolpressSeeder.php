@@ -7,6 +7,7 @@ use App\Author;
 use App\AuthorInfo;
 use App\Post;
 use App\Comment;
+use App\Tag;
 
 class BoolpressSeeder extends Seeder
 {
@@ -17,6 +18,13 @@ class BoolpressSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+        $tags = ['cronaca', 'sport', 'gossip', 'economia', 'salute', 'scienza'];
+        foreach($tags as $tag) {
+            $newTag = new Tag();
+            $newTag->name = $tag;
+            $newTag->save();
+        }
+
         for ($i = 0; $i < 5; $i++) {
 
             $author = new Author();
@@ -35,14 +43,12 @@ class BoolpressSeeder extends Seeder
                 $post = new Post();
                 $post->title = $faker->sentence();
                 $post->text = $faker->paragraph();
-                $post->date = $faker->dateTime();
 
                 $author->post()->save($post);
 
                 for($y = 0; $y < rand(1, 4); $y++) {
                     $comment = new Comment();
                     $comment->text = $faker->paragraph();
-                    $comment->date = $faker->dateTime();
     
                     $post->comment()->save($comment);
                 }    

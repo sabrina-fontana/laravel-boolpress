@@ -18,7 +18,6 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('author_id');
             $table->string('title', 100);
             $table->string('text', 1000);
-            $table->date('date');
             $table->timestamps();
 
             $table->foreign('author_id')

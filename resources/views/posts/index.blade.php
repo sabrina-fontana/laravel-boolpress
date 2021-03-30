@@ -31,6 +31,7 @@
                             {{$tag->name}}
                         @endforeach
                     </td>
+                    <td><a class="btn btn-warning" href="{{route('posts.edit', compact('post'))}}">Edit</a></td>
                 </tr>
             @endforeach
         </tbody>
