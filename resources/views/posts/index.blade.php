@@ -15,6 +15,7 @@
                 <th scope="col">Title</th>
                 <th scope="col">Text</th>
                 <th scope="col">Author</th>
+                <th scope="col">Image</th>
                 <th scope="col">Tags</th>
                 <th scope="col">Actions</th>
             </tr>
@@ -27,6 +28,11 @@
                     <td><a href="{{route('posts.show', compact('post'))}}">{{$post->title}}</a></td>
                     <td>{{$post->text}}</td>
                     <td>{{$post->author->info->name}}</td>
+                    <td>
+                        @if($post->image !== null)
+                            <img src="{{ asset($post->image) }}" width="200px">
+                        @endif
+                    </td>
                     <td>
                         @foreach ($post->tags as $tag)
                             {{$tag->name}}

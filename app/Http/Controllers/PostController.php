@@ -42,9 +42,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // 'image' è il nome dell'input
+        $path = $request->file('image')->store('public');
         $data = $request->all();
         $newPost = new Post();
         $newPost->fill($data);
+        $newPost->image = $path;
         $newPost->save();
 
         Mail::to('sabfon@hotmail.it')->send(new PostCreated($newPost));

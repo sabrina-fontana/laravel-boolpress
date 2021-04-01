@@ -6,7 +6,7 @@
 
     <h2>Create a post</h2>
 
-    <form method="post" action="{{route('posts.store')}}">
+    <form method="post" action="{{route('posts.store')}}" enctype="multipart/form-data">
         @csrf 
         @method('POST')
         <div class="form-group">
@@ -16,6 +16,10 @@
         <div class="form-group">
           <label for="text">Text</label>
           <textarea class="form-control" id="text" name="text" rows="3" placeholder="Text..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="text">Image</label>
+          <input type="file" class="form-control" id="image" name="image">
         </div>
         <div class="form-group">
           <label for="author_id">Author</label>

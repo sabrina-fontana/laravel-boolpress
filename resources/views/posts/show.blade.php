@@ -6,6 +6,7 @@
 
     <div class="card">
         <div class="card-body">
+            <img src="{{$post->image !== null ? asset($post->image) : ''}}" width="400px">
             <h5 class="card-title">{{$post->title}}</h5>
             <p class="card-text">
                 tag: 
