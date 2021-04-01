@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Author;
 use App\Tag;
+use App\Mail\PostCreated;
+use Illuminate\Support\Facades\Mail;
 
 class PostController extends Controller
 {
@@ -44,6 +46,9 @@ class PostController extends Controller
         $newPost = new Post();
         $newPost->fill($data);
         $newPost->save();
+
+        Mail::to('sabfon@hotmail.it')->send(new PostCreated($newPost));
+
         $newPost->tags()->attach($data['tags']);
         return redirect()->route('posts.show', ['post' => $newPost]);
     }
